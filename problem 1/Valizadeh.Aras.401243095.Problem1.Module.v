@@ -1,0 +1,22 @@
+    module modulesoale1(output out , input A , input not_A , input B , input not_B, input C , input not_C , input D , input not_D);
+        wire o1 , o2 ;
+        wire p1 , p2 , p3 , p4 , p5;
+        supply1 sup1;
+        supply0 sup0;
+        pmos p12(o1 , sup1 , not_A);
+        pmos p22(o1 , sup1 , not_B);
+        pmos p32(o1,sup1 , C);
+        pmos p42(o2,o1,not_A);
+        pmos p52(o2,o1,D);
+        pmos p62(out , o2 , not_C);
+        pmos p72(out , o2 , A);
+        pmos p82 (out , o2 , not_B);
+        nmos n12 (p1,sup0,A);
+        nmos n22 (p2,p1,not_C);
+        nmos n32(out , p2 , not_B);
+        nmos n42(p3,sup0 , D);
+        nmos n52(out,p3,not_A);
+        nmos n62(p4,sup0,C);
+        nmos n72(p5,p4,not_A);
+        nmos n82(out , p5 , not_B);
+    endmodule
